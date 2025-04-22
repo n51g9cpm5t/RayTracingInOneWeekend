@@ -1,5 +1,6 @@
 #include "rtweekend.h"
 
+#include "camera.h"
 #include "hittable.h"
 #include "hittable_list.h"
 #include "sphere.h"
