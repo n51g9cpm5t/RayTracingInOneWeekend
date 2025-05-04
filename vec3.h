@@ -132,4 +132,11 @@ inline vec3 reflect(const vec3& v, const vec3& n) {
     return v - 2 * dot(v, n) * n;
 }
 
+inline vec3 refract(const vec3& uv, const vec3& n,double etai_over_etat) {
+    auto cos_theta = std::fmin(dot(-uv, n), 1.0);
+    vec3 p_perp = etai_over_etat * (uv + cos_theta * n);
+    vec3 p_parallel = - n * (std::sqrt(1 - p_perp.length_squared()));
+    return p_perp + p_parallel;
+}
+
 #endif
